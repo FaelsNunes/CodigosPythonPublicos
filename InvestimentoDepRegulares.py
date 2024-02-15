@@ -1,0 +1,13 @@
+print('Vamos calcular o valor futuro que você terá ao investir com depósitos regulares mensais\n')
+#valorinv = float(input('Qual o valor que você investirá mensalmente? '))
+valorinv = str(input('Qual o valor que você investirá mensalmente? ')).strip()
+valorinv = float(valorinv.replace(',','.'))
+#taxainv = float(input('Qual a taxa mensal do investimento? '))
+taxainv = str(input('Qual a taxa mensal do investimento? ')).strip()
+taxainv = float(taxainv.replace(',','.').replace('%',''))
+perinv = int(input('Quantos meses você investirá o valor informado? '))
+vlrfut = valorinv*((((1+(taxainv/100))**(perinv+1))-1)/(taxainv/100))-valorinv
+#print('\nInvestindo R${:.2f} por {} meses a uma taxa mensal de {:.4f}%, você terá R${:.2f} de patrimônio'.format(valorinv,perinv,taxainv,vlrfut))
+#print('\nVocê guardará efetivamente R${:.2f}, sendo assim você ganhará R${:.2f} de juros'.format((valorinv*perinv),vlrfut-(valorinv*perinv)))
+print('\nInvestindo R${} por {} meses a uma taxa mensal de {}%, você terá R${} de patrimônio'.format(str(valorinv).replace('.',','),perinv,str(round(taxainv,4)).replace('.',','),str(round(vlrfut,2)).replace('.',',')))
+print('\nVocê guardará efetivamente R${}, sendo assim você ganhará R${} de juros'.format(str((valorinv*perinv)).replace('.',','),str(round(vlrfut-(valorinv*perinv),2)).replace('.',',')))
