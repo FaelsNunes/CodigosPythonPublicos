@@ -276,6 +276,9 @@ tp = int(input('Quantos anos tem seu carro? '))
 print('Carro Novo' if tp <=3 else 'Carro Velho')
 print('--FIM--')
 
+############VALIDAR CONDIÇÃO VAZIA############
+if not nome: #Valida se existe valor ou se o valor é True, a variável precisa ter sido declarada para funcionar
+
 
 ##########COLOCANDO COR NO TEXTO COM CÓDIGO ANSI##########
 '''
