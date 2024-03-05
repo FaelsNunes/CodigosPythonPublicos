@@ -685,3 +685,28 @@ help(tpf) #A função help retorna a descrição de uma função do sistema
 #-----------------------------------------------------------------------------------------#
 
 ##############################################################
+
+######################TRATAMENTO DE ERROS######################
+try: #Comando essencial
+    a = int(input('Numerador: '))
+    b = int(input('Denominador: '))
+    r = a / b
+
+
+##Comando essencial, pode ter vários, forma simples do comando##
+#except:
+#    print('Erro')
+
+
+except (ValueError, TypeError):
+    print('Tivemos um problema com os tipos de dados que você digitou.')
+except ZeroDivisionError:
+    print('Não é possível dividir um número por zero!')
+except KeyboardInterrupt:
+    print('O usuário preferiu não informar os dados!')
+except Exception as erro:
+    print(f'O erro encontrado foi {erro.__cause__}')
+else: #Comando opicional, executa se deu sucesso, se insucesso não mostra a mensagem de erro do sistema
+    print(f'O resultado é {r:.1f}')
+finally:#Comando opicional, executa sempre, independente do sucesso
+    print('Volte sempre! Muito obrigado!')
