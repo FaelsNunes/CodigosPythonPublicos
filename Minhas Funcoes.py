@@ -120,3 +120,50 @@ def titulo(msg):
 
 ########################################################################################################
 
+def leiaInt(msg):
+    """
+    Faz a leitura de um número inteiro, função do Gustavo Guanabara
+    :param msg:
+    :return:
+    """
+    while True:
+        try:
+            n = int(input(msg))
+        except (ValueError, TypeError):
+            print('\033[31mErro: por favor, digite um número inteiro válido.\033[m')
+            continue
+        except (KeyboardInterrupt):
+            print('\n\033[31mUsuário preferiu não digitar esse número.\033[m')
+            return 0
+        else:
+            return n
+
+########################################################################################################
+
+def linha(tam = 42):
+    """
+    Printa uma linha, se não for definido o tamanho, ele será 42, função do Gustavo Guanabara
+    :param tam:
+    :return:
+    """
+    return '-' * tam
+
+########################################################################################################
+
+def menu(lista):
+    """
+    Cria um menu automático e já armazena a opção escolhida, para utilizar essa função, utilize no programa principal o seguinte comando
+
+    ex. resposta = menu(['Opção 1, 'Opção 2'])
+
+    :param lista:
+    :return:
+    """
+    titulo('MENU PRINCIPAL')
+    c = 1
+    for i in lista:
+        print(f'\033[33m{c}\033[m - \033[34m{i}\033[m')
+        c += 1
+    print(linha())
+    opc = leiaInt('\033[32mSua Opção: \033[m')
+    return opc

@@ -123,6 +123,8 @@ import time
 import datetime #Dedidado a tempo e datas
 from tkinter import * #biblioteca gráfica, cria páginas
 from operator import itemgetter #Pega o valor de uma lista/dicionário pelo item Ex-091
+import urllib #Biblioteca para trabalhar com internet
+import urllib.request #Usado para abrir um site
 datetime.date #submódulo dedicado para datas
 datetime.time #submódulo dedicado para tempo
 datetime.datetime #submódulo dedicado para quando temos tanto tempo como data juntos
