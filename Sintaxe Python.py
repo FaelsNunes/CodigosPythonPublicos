@@ -712,3 +712,39 @@ else: #Comando opicional, executa se deu sucesso, se insucesso não mostra a men
     print(f'O resultado é {r:.1f}')
 finally:#Comando opicional, executa sempre, independente do sucesso
     print('Volte sempre! Muito obrigado!')
+
+######################CRIAR E MODIFICAR ARQUIVOS TXT######################
+
+valoresCelulares = [850,2230,1500,3500,5000,7000]
+
+'''
+
+'r'     -> Usado somente para ler algo
+'w'     -> Usado somente para escrever algo substituindo tudo
+'a'     -> Usado para acrescentar algo
+'r+'    -> Usado para ler e escrever algo 
+
+'''
+
+
+#Escreve substituindo
+with open('valores_celulares.txt','w') as arquivo: #Abre ou cria o arquivo se não existe
+    for valor in valoresCelulares: #Para cada item da lista
+        arquivo.write(f'{valor}\n') #Escreve no arquivo dando enter
+
+#Escreve adicionando
+with open('valores_celulares.txt','a') as arquivo: #Abre ou cria o arquivo se não existe
+    for valor in valoresCelulares: #Para cada item da lista
+        arquivo.write(f'{valor}\n') #Escreve no arquivo dando enter
+
+#Lê o arquivo
+with open('valores_celulares.txt','r') as arquivo: #Abre ou cria o arquivo se não existe
+    for valor in arquivo:
+        print(valor, end='')
+
+#Lê e escreve no final, mas não adiciona enter
+with open('valores_celulares.txt','r+') as arquivo: #Abre ou cria o arquivo se não existe
+    for valor in arquivo: #Para cada item da lista
+        print(valor)
+    arquivo.write('2000') #Escreve no arquivo dando enter
+    arquivo.write('\n') #Escreve no arquivo dando enter
