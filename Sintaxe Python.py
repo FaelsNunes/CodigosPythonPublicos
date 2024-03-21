@@ -748,3 +748,126 @@ with open('valores_celulares.txt','r+') as arquivo: #Abre ou cria o arquivo se n
         print(valor)
     arquivo.write('2000') #Escreve no arquivo dando enter
     arquivo.write('\n') #Escreve no arquivo dando enter
+
+######################MANEIRA DO CURSO EM VÍDEO######################
+
+from time import sleep
+
+###########################################
+
+def leiaInt(msg):
+    while True:
+        try:
+            n = int(input(msg))
+        except (ValueError, TypeError):
+            print('\033[31mErro: por favor, digite um número inteiro válido.\033[m')
+            continue
+        except (KeyboardInterrupt):
+            print('\n\033[31mUsuário preferiu não digitar esse número.\033[m')
+            return 0
+        else:
+            return n
+def linha(tam = 42):
+    return '-' * tam
+
+
+def cabecalho(txt):
+    print(linha())
+    print(txt.center(42))
+    print(linha())
+
+
+def menu(lista):
+    cabecalho('MENU PRINCIPAL')
+    c = 1
+    for i in lista:
+        print(f'\033[33m{c}\033[m - \033[34m{i}\033[m')
+        c += 1
+    print(linha())
+    opc = leiaInt('\033[32mSua Opção: \033[m')
+    return opc
+
+###########################################
+
+def arquivoExiste(nome):
+    try:
+        a = open(nome, 'r')
+        a.close()
+    except FileNotFoundError:
+        return False
+    else:
+        return True
+
+def criarArquivo(nome):
+    try:
+        a = open(nome, 'w+')
+        a.close()
+    except:
+        print('Houve um erro na criação do arquivo!')
+    else:
+        print(f'Arquivo {nome} criado com sucesso!')
+
+def lerArquivo(nome):
+    try:
+        a = open(nome, 'r')
+    except:
+        print('Erro ao ler o arquivo')
+    else:
+        cabecalho('PESSOAS CADASTRADAS')
+        #print(a.read()) #Mostra todos os dados como estão
+        for linha in a:
+            dado = linha.split(';')
+            dado[1] = dado[1].replace('\n','')
+            print(f'{dado[0]:<30}{dado[1]:>3} anos')
+    finally:
+        a.close()
+
+
+def escreverArquivo(nome_arquivo,nome,idade):
+    try:
+        a = open(nome_arquivo, 'a')
+    except:
+        print('Houve um erro na abertura do arquivo!')
+    else:
+        try:
+            a.write(f'{nome};{idade}\n')
+        except:
+            print('Houve um erro na hora de escrever os dados!')
+        else:
+            print(f'Novo registro de {nome} adicionado.')
+    finally:
+        a.close()
+
+###########################################
+
+#Programa principal
+
+arq = 'cadastro_pessoas.txt'
+
+#Se o arquivo não existe, cria-se o arquivo
+if not arquivoExiste(arq):
+    criarArquivo(arq)
+
+while True:
+    #A resposta recebe o valor de "opc" que está na função menu
+    resposta = menu(['Ver pessoas cadastradas', 'Cadasatrar nova pessoa', 'Sair do Sistema'])
+    #Cada texto acima dentro da lista é uma opção do menu, o título do menu está dentro do função
+
+    #Executa-se a opção selecionada abaixo
+    if resposta == 1:
+        lerArquivo(arq)
+    elif resposta == 2:
+        cabecalho('NOVO CADASTRO')
+        nomePessoa = str(input('Nome: ')).strip().capitalize()
+        idadePessoa = leiaInt('Idade: ')
+        escreverArquivo(arq,nomePessoa,idadePessoa)
+    elif resposta == 3:
+        cabecalho('Sainda do sistema... Até logo!')
+        break
+    else:
+        cabecalho('\033[31mERRO! Digite uma opção válida!\033[m')
+    sleep(2)
+
+##############################################################
+##############################################################
+
