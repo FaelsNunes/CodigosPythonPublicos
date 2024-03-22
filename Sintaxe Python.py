@@ -838,6 +838,27 @@ def escreverArquivo(nome_arquivo,nome,idade):
     finally:
         a.close()
 
+def importarArquivo(variavel,nome):
+    try:
+        a = open(nome, 'r')
+    except:
+        print('Erro ao ler o arquivo')
+    else:
+        for linha in a:
+            dado = str(linha).replace('\n','')
+            variavel.append(dado)
+    finally:
+        a.close()
+
+
+def limparArquivo(nome):
+    try:
+        a = open(nome, 'w') #zera o arquivo
+        a.close()
+    except:
+        print('Houve um erro na abertura do arquivo!')
+
+
 ###########################################
 
 #Programa principal

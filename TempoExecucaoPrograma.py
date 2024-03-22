@@ -29,7 +29,9 @@ Escrever o programa aqui
 
 fimexecucao = dates.data_hora_atual()
 tempoexecucao = (fimexecucao - inicioexecucao)
+print('\n')
 strings.titulo('DETALHES DA EXECUÇÃO')
 print(f'Início da execução: {inicioexecucao}')
 print(f'Fim da execução: {fimexecucao}')
 print(f'Duração da execução: {tempoexecucao}')
+print('\n')
