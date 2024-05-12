@@ -167,3 +167,11 @@ def menu(lista):
     print(linha())
     opc = leiaInt('\033[32mSua Opção: \033[m')
     return opc
+
+########################################################################################################
+def posicaoTela():
+    import pyautogui
+    import time
+
+    time.sleep(5)
+    print(pyautogui.position())
